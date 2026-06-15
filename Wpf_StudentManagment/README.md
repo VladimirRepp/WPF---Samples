@@ -1,7 +1,3 @@
-Here is a detailed README file based on your document and the purpose of the project. You can copy this content into a `README.md` file in the root of your `Wpf_StudentManagment` project folder.
-
----
-
 # 🧑‍🎓 Менеджер студентов — WPF обучающий проект
 
 Добро пожаловать!  
