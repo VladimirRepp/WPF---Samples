@@ -1,0 +1,95 @@
+﻿<Window x:Class="Wpf_StudentManagment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Менеджер студентов"
+        Height="500"
+        Width="800">
+
+    <!-- Подключение внешнего файла стилей -->
+    <Window.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary
+                    Source="../Resources/Styles.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+    <!-- Основной контейнер окна -->
+    <Grid Margin="15">
+
+        <!-- Разделение окна на две строки -->
+        <Grid.RowDefinitions>
+
+            <!-- Верхняя панель управления -->
+            <RowDefinition Height="Auto"/>
+
+            <!-- Таблица студентов -->
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <!-- Карточка ввода данных -->
+        <Border Grid.Row="0"
+                Style="{StaticResource CardBorderStyle}"
+                Padding="15"
+                Margin="0 0 0 10">
+
+            <!-- Горизонтальное размещение элементов -->
+            <StackPanel Orientation="Horizontal">
+
+                <!-- Подпись поля имени -->
+                <Label Content="Имя студента:"/>
+
+                <!-- Поле ввода имени -->
+                <TextBox Width="200"
+                         Text="{Binding StudentName,
+                                UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- Подпись поля возраста -->
+                <Label Content="Возраст студента:"/>
+
+                <!-- Поле ввода возраста -->
+                <TextBox Width="100"
+                         Text="{Binding StudentAge,
+                                UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- Кнопка добавления студента -->
+                <Button Content="Добавить"
+                        Width="120"
+                        Command="{Binding AddStudentCommand}" />
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- Таблица отображения студентов -->
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Students}"
+                  AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+
+                <!-- Колонка имени -->
+                <DataGridTextColumn
+                    Header="Имя"
+                    Binding="{Binding Name}" />
+
+                <!-- Колонка возраста -->
+                <DataGridTextColumn
+                    Header="Возраст"
+                    Binding="{Binding Age}" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+
+</Window>
