@@ -8,6 +8,8 @@ public class MainViewModel : INotifyPropertyChanged
 {
     private int _counter;
 
+    public event PropertyChangedEventHandler? PropertyChanged;
+
     public int Counter
     {
         get => _counter;
@@ -28,11 +30,8 @@ public class MainViewModel : INotifyPropertyChanged
 
     public MainViewModel()
     {
-        IncrementCommand =
-            new RelayCommand(Increment);
-
-        DecrementCommand =
-            new RelayCommand(Decrement);
+        IncrementCommand = new RelayCommand(Increment);
+        DecrementCommand = new RelayCommand(Decrement);
     }
 
     private void Increment()
@@ -44,7 +43,4 @@ public class MainViewModel : INotifyPropertyChanged
     {
         Counter--;
     }
-
-    public event PropertyChangedEventHandler?
-        PropertyChanged;
 }
