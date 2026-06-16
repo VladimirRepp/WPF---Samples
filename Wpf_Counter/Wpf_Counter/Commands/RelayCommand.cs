@@ -9,6 +9,8 @@ public class RelayCommand : ICommand
 {
     private readonly Action _execute;
 
+    public event EventHandler? CanExecuteChanged;
+
     public RelayCommand(Action execute)
     {
         _execute = execute;
@@ -23,6 +25,4 @@ public class RelayCommand : ICommand
     {
         _execute();
     }
-
-    public event EventHandler? CanExecuteChanged;
 }
