@@ -6,6 +6,7 @@ namespace CounterApp.ViewModels;
 
 public class MainViewModel : INotifyPropertyChanged
 {
+    // Model (лучше вынести в отдельный класс):
     private int _counter;
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -24,6 +25,7 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
+    // ViewModel:
     public ICommand IncrementCommand { get; }
 
     public ICommand DecrementCommand { get; }
