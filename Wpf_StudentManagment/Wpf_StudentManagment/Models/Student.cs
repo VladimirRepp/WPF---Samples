@@ -9,7 +9,9 @@ namespace Wpf_StudentManagment.Models
     public class Student : INotifyPropertyChanged
     {
         private string _name;
-        private int _age;
+        private int _age;        
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public string Name
         {
@@ -30,8 +32,6 @@ namespace Wpf_StudentManagment.Models
                 OnPropertyChanged(nameof(Age));
             }
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {
