@@ -1,0 +1,192 @@
+﻿<Window x:Class="WpfApp_Bank.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_Bank"
+        mc:Ignorable="d"
+        Title="Мой банк"
+        Height="700"
+        Width="700"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid Margin="30">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0"
+                   Text="МОЙ БАНК"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,25"/>
+
+
+        <!-- Баланс -->
+        <Border Grid.Row="1"
+                Background="LightGray"
+                CornerRadius="10"
+                Padding="20"
+                Margin="0,0,0,25">
+
+            <StackPanel>
+
+                <TextBlock Text="Баланс"
+                           FontSize="16"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock x:Name="BalanceTextBlock"
+                           Text="0,00 ₽"
+                           FontSize="36"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+        </Border>
+
+
+        <!-- Ввод суммы -->
+        <Grid Grid.Row="2"
+              Margin="0,0,0,25">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                       Text="Сумма операции:"
+                       FontSize="16"
+                       Margin="0,0,0,7"/>
+
+
+            <TextBox x:Name="AmountTextBox"
+                     Grid.Row="1"
+                     Height="40"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
+                     KeyDown="AmountTextBox_KeyDown"/>
+
+        </Grid>
+
+
+        <!-- Кнопки операций -->
+        <Grid Grid.Row="2"
+              Margin="0,95,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Button Grid.Column="0"
+                    Content="Пополнить"
+                    Height="45"
+                    FontSize="16"
+                    Margin="0,0,5,0"
+                    Click="DepositButton_Click"/>
+
+
+            <Button Grid.Column="1"
+                    Content="Снять"
+                    Height="45"
+                    FontSize="16"
+                    Margin="5,0,0,0"
+                    Click="WithdrawButton_Click"/>
+
+        </Grid>
+
+
+        <!-- История -->
+        <GroupBox Grid.Row="3"
+                  Header="История операций"
+                  FontSize="16"
+                  Margin="0,0,0,20">
+
+            <ListBox x:Name="OperationsListBox"
+                     BorderThickness="0"
+                     Margin="5">
+
+                <ListBox.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Grid Margin="5">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- Знак -->
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding Sign}"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+
+                            <!-- Сумма -->
+                            <TextBlock Grid.Column="1"
+                                       FontSize="16"
+                                       VerticalAlignment="Center">
+
+                                <Run Text="{Binding Amount,
+                                            StringFormat={}{0:N2}}"/>
+
+                                <Run Text=" ₽"/>
+
+                            </TextBlock>
+
+
+                            <!-- Тип -->
+                            <TextBlock Grid.Column="2"
+                                       Text="{Binding TypeText}"
+                                       FontSize="16"
+                                       VerticalAlignment="Center"/>
+
+
+                            <!-- Дата -->
+                            <TextBlock Grid.Column="3"
+                                       Text="{Binding Date,
+                                            StringFormat={}{0:dd.MM.yyyy HH:mm}}"
+                                       FontSize="14"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"/>
+
+                        </Grid>
+
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+
+        </GroupBox>
+
+
+        <!-- Нижние кнопки -->
+        <Button Grid.Row="4"
+                Content="Очистить историю"
+                Height="40"
+                FontSize="15"
+                Click="ClearHistoryButton_Click"/>
+
+    </Grid>
+</Window>
