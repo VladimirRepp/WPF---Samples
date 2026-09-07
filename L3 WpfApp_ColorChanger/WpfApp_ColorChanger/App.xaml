@@ -1,0 +1,10 @@
+﻿<Application x:Class="WpfApp_ColorChanger.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp_ColorChanger"
+             StartupUri="ColorChangerWindow_ValueChanged.xaml"> <!-- задаем первое окно запуска -->
+
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
