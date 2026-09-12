@@ -18,7 +18,12 @@
         </Grid.RowDefinitions>
 
         <!-- Заголовок -->
-        <TextBlock Grid.Row="0" Text="Мои задачи" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,25"/>
+        <TextBlock Grid.Row="0" 
+                Text="Мои задачи" 
+                FontSize="28" 
+                FontWeight="Bold" 
+                HorizontalAlignment="Center" 
+                Margin="0,0,0,25"/>
 
         <!-- Добавление задачи -->
         <Grid Grid.Row="1" Margin="0,0,0,20">
@@ -29,12 +34,18 @@
             </Grid.ColumnDefinitions>
 
             <TextBox x:Name="TaskTextBox" 
-                     Grid.Column="0" Height="40" FontSize="16" 
-                     VerticalContentAlignment="Center"
-                     Margin="0,0,10,0" KeyDown="TaskTextBox_KeyDown"/>
+                        Grid.Column="0" 
+                        Height="40" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center"
+                        Margin="0,0,10,0" 
+                        KeyDown="TaskTextBox_KeyDown"/>
 
             <Button Grid.Column="1" Content="Добавить" 
-                    Width="100" Height="40" FontSize="14" Click="AddButton_Click"/>
+                        Width="100" 
+                        Height="40" 
+                        FontSize="14" 
+                        Click="AddButton_Click"/>
         </Grid>
 
         <!-- Список задач -->
@@ -49,7 +60,8 @@
                     <!-- TasksListBox - по имени обращаемся в коде -->                    
                     <CheckBox Content="{Binding Title}" 
                               IsChecked="{Binding IsCompleted}" 
-                              FontSize="16" Margin="5" 
+                              FontSize="16" 
+                              Margin="5" 
                               Checked="TaskCheckBox_Checked" 
                               Unchecked="TaskCheckBox_Unchecked"/>
 
@@ -65,8 +77,18 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="TasksCountTextBlock" Grid.Column="0" Text="Задач: 0" FontSize="16" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="CompletedCountTextBlock" Grid.Column="1" Text="Выполнено: 0" FontSize="16" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TasksCountTextBlock" 
+                        Grid.Column="0" 
+                        Text="Задач: 0" 
+                        FontSize="16" 
+                        HorizontalAlignment="Center"/>
+
+            <TextBlock x:Name="CompletedCountTextBlock" 
+                        Grid.Column="1" 
+                        Text="Выполнено: 0" 
+                        FontSize="16" 
+                        HorizontalAlignment="Center"/>
+
         </Grid>
 
         <!-- Кнопки управления -->
@@ -78,8 +100,17 @@
 
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Удалить выбранную" Height="40" Margin="0,0,5,0" Click="DeleteButton_Click"/>
-            <Button Grid.Column="1" Content="Очистить" Height="40" Margin="5,0,0,0" Click="ClearButton_Click"/>
+            <Button Grid.Column="0" 
+                        Content="Удалить выбранную" 
+                        Height="40" 
+                        Margin="0,0,5,0" 
+                        Click="DeleteButton_Click"/>
+
+            <Button Grid.Column="1"         
+                        Content="Очистить" 
+                        Height="40" 
+                        Margin="5,0,0,0" 
+                        Click="ClearButton_Click"/>
 
         </Grid>
     </Grid>
