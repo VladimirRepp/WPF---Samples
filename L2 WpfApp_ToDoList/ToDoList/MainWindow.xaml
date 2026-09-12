@@ -50,7 +50,10 @@
         </Grid>
 
         <!-- Список задач -->
-        <ListBox x:Name="TasksListBox" Grid.Row="2" FontSize="16" BorderThickness="1">
+        <ListBox x:Name="TasksListBox" 
+                Grid.Row="2" 
+                FontSize="16" 
+                BorderThickness="1">
 
             <ListBox.ItemTemplate>
 
