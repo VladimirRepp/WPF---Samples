@@ -41,7 +41,8 @@
                         Margin="0,0,10,0" 
                         KeyDown="TaskTextBox_KeyDown"/>
 
-            <Button Grid.Column="1" Content="Добавить" 
+            <Button Grid.Column="1" 
+                        Content="Добавить" 
                         Width="100" 
                         Height="40" 
                         FontSize="14" 
