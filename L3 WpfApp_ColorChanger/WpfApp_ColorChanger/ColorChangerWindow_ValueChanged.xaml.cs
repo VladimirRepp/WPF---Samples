@@ -4,7 +4,7 @@ using System.Windows.Media;
 namespace WpfApp_ColorChanger
 {
     /// <summary>
-    /// Версия реализации через ValueChanged \
+    /// Версия реализации через ValueChanged - CodeBehaind
     /// Здесь мы обрабатываем событие ValueChanged каждого Slider и обновляем цвет в обработчике.
     /// </summary>
     public partial class ColorChangerWindow_ValueChanged : Window
