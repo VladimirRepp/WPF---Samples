@@ -46,6 +46,7 @@ Wpf_Counter/
 │
 ├── Commands/
 │   └── RelayCommand.cs          # Реализация ICommand для кнопок
+│
 ├── Models/
 │   └── Counter.cs               # Логика счётчика 
 │
