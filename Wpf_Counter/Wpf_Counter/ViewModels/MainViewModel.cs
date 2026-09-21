@@ -10,9 +10,10 @@ public class MainViewModel : INotifyPropertyChanged, IDisposable
     private readonly Counter _counter;
     private bool _disposed;
 
+    // Событие - уведомление об изменение свойства 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    // Прокси-свойство — теперь Binding найдёт его
+    // Прокси-свойство — теперь Binding берет его
     public int Count => _counter.Count;
 
     public ICommand IncrementCommand { get; }
@@ -23,39 +24,30 @@ public class MainViewModel : INotifyPropertyChanged, IDisposable
         _counter = counter;
         _counter.Count = 0;
 
-        // Подписываемся на модель и переиспускаем её уведомления
-        _counter.PropertyChanged += OnCounterPropertyChanged;
-
         IncrementCommand = new RelayCommand(Increment);
         DecrementCommand = new RelayCommand(Decrement);
     }
 
     /// <summary>
-    /// Вызвать при закрытие окна
+    /// Вызвать при закрытие окна, при необходимости очистить ресурсы до GC
     /// </summary>
     public void Dispose()
     {
         if (_disposed)
             return;
 
-        _counter.PropertyChanged -= OnCounterPropertyChanged;
         _disposed = true;
-
-        // Можно через деструктор, но лучше явно вызывать Dispose() при закрытии окна
-        // так как он недетерминированный, и GC не гарантирует его вызов в нужный момент
-        // В текущем случае Counter держит ссылку на ViewModel, и наоборот 
-        // Это циклическая ссылка — но GC в .NET справляется с циклическими ссылками
-        // По этому, утечни не должны быть, но лучше явно отписываться от событий,
-        // чтобы GC мог освободить память быстрее
     }
 
-    private void OnCounterPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        // Если изменилось Count — сообщаем об этом View
-        if (e.PropertyName == nameof(Counter.Count))
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Count)));
-    }
-
-    private void Increment() => _counter.Increment();
-    private void Decrement() => _counter.Decrement();
+    private void Increment()
+     {
+         _counter.Increment();
+         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
+     }
+    
+     private void Decrement() 
+     {
+         _counter.Decrement();
+         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
+     }
 }
