@@ -14,7 +14,11 @@ public class MainViewModel : INotifyPropertyChanged, IDisposable
     public event PropertyChangedEventHandler? PropertyChanged;
 
     // Прокси-свойство — теперь Binding берет его
-    public int Count => _counter.Count;
+     public int Count
+     {
+         get => _counter.Count;
+         set => _counter.Count = value;
+     }
 
     public ICommand IncrementCommand { get; }
     public ICommand DecrementCommand { get; }
@@ -22,7 +26,6 @@ public class MainViewModel : INotifyPropertyChanged, IDisposable
     public MainViewModel(Counter counter)
     {
         _counter = counter;
-        _counter.Count = 0;
 
         IncrementCommand = new RelayCommand(Increment);
         DecrementCommand = new RelayCommand(Decrement);
